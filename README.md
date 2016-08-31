@@ -9,6 +9,15 @@ CoderVault
 </p>
 
 
+About
+-----
+_CoderVault_ is a simple, self-hosted, snippets manager.
+
+Your **Snippets** are stored inside **Vaults**. Each **Vault** has a _README_ and it can be _Public_, _Unlisted_ or _Private_.
+
+CoderVault support syntax highlight for 100+ programming languages.
+
+
 TO-DO
 -----
 - [ ] Versioning
@@ -18,6 +27,12 @@ TO-DO
 - [ ] Favorite Vaults list
 - [ ] Clonable Vaults
 - [ ] Clonable Snippets
+
+
+Screenshots
+-----------
+![Vault](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/vault.png)
+![Snippet](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/snippet.png)
 
 
 License
