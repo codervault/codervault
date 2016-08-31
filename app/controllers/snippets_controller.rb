@@ -3,6 +3,7 @@ class SnippetsController < ApplicationController
   before_filter :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
   protect_from_forgery
 
+  before_action :set_vault, only: [:new, :create]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_action :check_edit_permissions, only: [:new, :edit, :update, :destroy]
   before_action :check_show_permissions, only: [:show]
@@ -92,6 +93,10 @@ class SnippetsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_vault
+      @vault = Vault.find(params[:vault_id])
+    end
+
     def set_snippet
       @vault = Vault.find(params[:vault_id])
       @snippet = @vault.snippets.find(params[:id])
