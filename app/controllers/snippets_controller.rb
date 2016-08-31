@@ -1,7 +1,6 @@
 class SnippetsController < ApplicationController
   # Devise
-  before_filter :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
-  protect_from_forgery
+  before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
 
   before_action :set_vault, only: [:new, :create]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
