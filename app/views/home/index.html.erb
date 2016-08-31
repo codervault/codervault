@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>Public Vaults</h1>
+</div>
+
+<% if @public_vaults.size == 0 %>
+<div class="well">
+  <span class="text-muted">Public vaults will be listed here.</span>
+</div>
+<% end %>
+
+<div class="row">
+  <% @public_vaults_by_name.each do |vault| %>
+  <div class="col-md-12">
+    <div class="panel panel-default panel-interactive">
+      <%= link_to "", vault, class: "overlay" %>
+
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= vault.name %>
+        </h3>
+
+        <small class="text-muted">
+          Created by <b><%= User.find(vault.user_id).email %></b>, updated <%= time_ago_in_words(vault.updated_at, include_seconds: true) %> ago.
+        </small>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

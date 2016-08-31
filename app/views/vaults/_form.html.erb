@@ -1,0 +1,35 @@
+<%= form_for(@vault) do |f| %>
+  <% if @vault.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= pluralize(@vault.errors.count, "error") %> prohibited this vault from being saved:</h3>
+    </div>
+
+    <ul class="list-group">
+      <% @vault.errors.full_messages.each do |message| %>
+      <li class="list-group-item"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label t(:name), class: "control-label" %>
+    <%= f.text_field :name, class: "form-control", autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label t(:readme), class: "control-label" %>
+    <%= f.text_area :readme, class: "form-control", rows: "10" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :exposure, class: "control-label" %>
+    <%= f.select :exposure, options_for_select(Vault.exposures.map { |k, v| [I18n.t(k), k] }, @vault.exposure), {}, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-success" %>
+    <%= link_to t(:cancel), root_path, class: "btn btn-default" %>
+  </div>
+<% end %>

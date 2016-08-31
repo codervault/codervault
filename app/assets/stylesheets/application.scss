@@ -1,0 +1,91 @@
+/*
+ *
+ *= require_tree
+ *= require_self
+ *
+ *= require highlight/tomorrow
+ *
+ */
+
+// Bootstrap
+@import 'bootstrap-sprockets';
+@import 'bootswatch/yeti/variables';
+@import 'bootstrap';
+@import 'bootswatch/yeti/bootswatch';
+
+
+// Variables
+$light-color: #fff;
+$transition-base:  all 200ms linear;
+
+
+// Mixins
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius:    $radius;
+  -ms-border-radius:     $radius;
+  border-radius:         $radius;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition:    $args;
+  -ms-transition:     $args;
+  -o-transition:      $args;
+  transition:         $args;
+}
+
+
+// Base
+body {
+  padding: (1.5 * $navbar-height) 0;
+}
+
+a {
+  @include transition($transition-base);
+}
+
+textarea {
+  font-family: $font-family-monospace;
+}
+
+.panel-interactive {
+  @include transition($transition-base);
+  position: relative;
+
+  &:hover {
+    border: thin solid $brand-info;
+  }
+
+  .overlay {
+    @include border-radius($panel-border-radius);
+    @include transition($transition-base);
+
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    opacity: 0;
+    padding: 0 (2/3 * $panel-body-padding);
+    position: absolute;
+    width: 100%;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+}
+
+.snippet-code {
+  background: $light-color;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: $panel-body-padding !important;
+
+  &:after,
+  &:before {
+    content: '';
+  }
+}

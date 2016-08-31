@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-collapse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%= link_to 'CoderVault', root_path, class: 'navbar-brand' %>
+    </div>
+
+    <div id="nav-collapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+        <li class="<%= active_class(explore_path) %>">
+          <%= link_to "Explore", explore_path %>
+        </li>
+        <% end %>
+        <li class="<%= active_class(about_path) %>">
+          <%= link_to "About", about_path %>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+        <li class="dropdown">
+          <a id="dropdownMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %> <span class="caret"></span>
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+            <li class="dropdown-header">Vaults</li>
+            <li>
+              <%= link_to "New Vault", new_vault_path %>
+            </li>
+
+            <li role="separator" class="divider"></li>
+
+            <li class="dropdown-header">Account</li>
+            <li>
+              <%= link_to "Edit", edit_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </li>
+        <% else %>
+        <li class="<%= active_class(new_user_session_path) %>">
+          <%= link_to "Sign in", new_user_session_path %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

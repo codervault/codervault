@@ -1,0 +1,35 @@
+<%= form_for [@snippet.vault, @snippet] do |f| %>
+  <% if @snippet.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h3>
+    </div>
+
+    <ul class="list-group">
+      <% @snippet.errors.full_messages.each do |message| %>
+      <li class="list-group-item"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label t(:name), class: "control-label" %>
+    <%= f.text_field :name, class: "form-control", autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label t(:language), class: "control-label" %>
+    <%= f.select :language, options_for_select(Snippet.languages.map { |k, v| [I18n.t(k), k] }, @snippet.language), {}, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label t(:code), class: "control-label" %>
+    <%= f.text_area :code, class: "form-control", rows: "15" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-success" %>
+    <%= link_to t(:cancel), vault_path(@snippet.vault_id), class: "btn btn-default" %>
+  </div>
+<% end %>

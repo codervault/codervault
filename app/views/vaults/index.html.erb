@@ -1,0 +1,46 @@
+<% if @vaults.size == 0 %>
+<div class="well">
+  <span class="text-muted">Nothing here.</span>
+</div>
+<% end %>
+
+<div class="row">
+  <% @vaults.each do |vault| %>
+  <div class="col-md-12">
+    <div class="panel panel-default panel-interactive">
+      <%= link_to "", vault, class: "overlay" %>
+
+      <!-- <div class="overlay">
+        <p class="center-block">
+          <%= link_to "View vault", vault, class: "btn btn-default btn-large" %>
+          <%= link_to "Edit vault", edit_vault_path(vault), class: "btn btn-primary btn-large" %>
+        </p>
+      </div> -->
+
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= vault.name %>
+        </h3>
+
+        <small class="text-muted">
+          Updated <%= time_ago_in_words(vault.updated_at, include_seconds: true) %> ago.
+        </small>
+      </div>
+
+      <div class="panel-body">
+        <% if vault.readme.present? %>
+        <%= Kramdown::Document.new(vault.readme).to_html.html_safe %>
+        <% else %>
+        <span class="text-muted">
+          This vault has no README.
+        </span>
+        <% end %>
+      </div>
+
+      <div class="panel-footer clearfix">
+        <span class="label label-<%= get_exposure_class(vault.exposure) %> pull-right"><%= t(vault.exposure) %></span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

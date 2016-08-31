@@ -1,0 +1,95 @@
+<h1>
+  <%= @vault.name %>
+</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <% if @vault.readme.present? %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">README</h3>
+      </div>
+
+      <div class="panel-body">
+        <%= Kramdown::Document.new(@vault.readme).to_html.html_safe %>
+      </div>
+    </div>
+    <% else %>
+    <div class="well">
+      <span class="text-muted">This vault does not have README yet.</span>
+    </div>
+    <% end %>
+
+    <% @snippets.each do |snippet| %>
+    <div class="panel panel-default panel-interactive">
+
+      <% if @interaction_enabled %>
+      <div class="overlay">
+        <p>
+          <%= link_to "Show", vault_snippet_path(@vault.id, snippet.id), class: "btn btn-default btn-xs" %>
+          <%= link_to "Edit", edit_vault_snippet_path(@vault.id, snippet.id), class: "btn btn-default btn-xs" %>
+          <%= link_to "Delete", vault_snippet_path(@vault.id, snippet.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+        </p>
+      </div>
+      <% else %>
+      <%= link_to "", vault_snippet_path(@vault.id, snippet.id), class: "overlay" %>
+      <% end %>
+
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= snippet.name %>
+
+          <span class="label label-info pull-right"><%= t(snippet.language) %></span>
+        </h3>
+
+        <small class="text-muted">
+          Updated <%= time_ago_in_words(snippet.updated_at, include_seconds: true) %> ago.
+        </small>
+      </div>
+
+      <pre class="panel-body snippet-code <%= snippet.language %>"><%= truncate(snippet.code, :length => 300, :separator => /\n/, :omission => '…') %></pre>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th>Owner</th>
+        <td><%= User.find(@vault.user_id).email %></td>
+      </tr>
+      <tr>
+        <th>Exposure</th>
+        <td>
+          <span class="label label-<%= get_exposure_class(@vault.exposure) %>">
+            <%= t(@vault.exposure) %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th>Snippets</th>
+        <td>
+          <span class="badge">
+            <%= @vault.snippets.count %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <th>Created at</th>
+        <td><%= l @vault.created_at, format: :long %></td>
+      </tr>
+      <tr>
+        <th>Updated at</th>
+        <td><%= l @vault.updated_at, format: :long %></td>
+      </tr>
+    </table>
+
+    <% if @interaction_enabled %>
+    <div class="btn-group btn-group-justified">
+      <%= link_to 'Add Snippet', new_vault_snippet_path(@vault), class: "btn btn-default" %>
+      <%= link_to 'Edit Vault', edit_vault_path(@vault), class: "btn btn-default" %>
+      <%= link_to 'Delete Vault', @vault, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </div>
+    <% end %>
+  </div>
+</div>

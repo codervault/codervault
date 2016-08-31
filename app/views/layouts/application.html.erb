@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Codervault</title>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <div class="container" role="main">
+
+    <%= render 'layouts/nav' %>
+
+    <%= render 'layouts/messages' %>
+
+    <%= yield %>
+
+  </div>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+</body>
+</html>

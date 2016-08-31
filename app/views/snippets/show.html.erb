@@ -1,0 +1,47 @@
+<h1>
+  <%= @snippet.name %>
+</h1>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Code</h3>
+      </div>
+
+      <pre class="panel-body snippet-code <%= @snippet.language %>"><%= @snippet.code %></pre>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th>Vault</th>
+        <td>
+          <%= link_to @vault.name, @vault %>
+        </td>
+      </tr>
+      <tr>
+        <th>Language</th>
+        <td>
+          <%= t(@snippet.language) %>
+        </td>
+      </tr>
+      <tr>
+        <th>Created at</th>
+        <td><%= l @snippet.created_at, format: :long %></td>
+      </tr>
+      <tr>
+        <th>Updated at</th>
+        <td><%= l @snippet.updated_at, format: :long %></td>
+      </tr>
+    </table>
+
+    <% if @interaction_enabled %>
+    <div class="btn-group btn-group-justified">
+      <%= link_to 'Edit', edit_vault_snippet_path(@vault.id, @snippet.id), class: "btn btn-default" %>
+      <%= link_to 'Delete', vault_snippet_path(@vault.id, @snippet.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </div>
+    <% end %>
+  </div>
+</div>

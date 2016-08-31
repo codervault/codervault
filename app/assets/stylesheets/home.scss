@@ -1,0 +1,35 @@
+/*
+ *
+ *= require_self
+ *
+ */
+
+.jumbotron {
+  // padding-bottom: 0 !important;
+  text-align: center;
+
+  .logo {
+    height: 250px;
+    padding: 15px;
+    width: 250px;
+  }
+
+  .actions {
+    padding: 15px;
+  }
+
+  .screen {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.feature {
+  text-align: center;
+
+  img {
+    height: 125px;
+    padding: 20px;
+    width: 125px;
+  }
+}
