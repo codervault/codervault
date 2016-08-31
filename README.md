@@ -5,7 +5,7 @@ CoderVault
 [![GitHub License](https://img.shields.io/github/license/codervault/codervault.svg)](#license)&nbsp;
 
 <p align="center">
-    <img width="300" src="https://raw.githubusercontent.com/codervault/codervault/master/app/assets/images/logo.svg" alt="CoderVault">
+    <img width="300" src="https://rawgit.com/codervault/codervault/master/app/assets/images/logo.svg" alt="CoderVault">
 </p>
 
 
