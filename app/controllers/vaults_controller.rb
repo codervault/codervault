@@ -1,11 +1,10 @@
 class VaultsController < ApplicationController
   # Devise
-  before_filter :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
-  protect_from_forgery
+  before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
 
   before_action :set_vault, only: [:show, :edit, :update, :destroy]
   before_action :check_edit_permissions, only: [:edit, :update, :destroy]
-  before_filter :check_show_permissions, only: :show
+  before_action :check_show_permissions, only: :show
 
   def check_edit_permissions
     if @vault.user_id != current_user.id then

@@ -1,33 +1,12 @@
 class SnippetsController < ApplicationController
   # Devise
-  before_filter :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
-  protect_from_forgery
+  before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
 
   before_action :set_vault, only: [:new, :create]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_action :check_edit_permissions, only: [:new, :edit, :update, :destroy]
   before_action :check_show_permissions, only: [:show]
   before_action :redirect, only: [:index]
-
-  def check_edit_permissions
-    if @vault.user_id != current_user.id then
-      flash[:alert] = t(:permissions_error)
-      redirect_to @vault
-    end
-  end
-
-  def check_show_permissions
-    if !user_signed_in? || @vault.user_id != current_user.id
-      if @vault.exposure == "private_vault"
-        flash[:alert] = t(:permissions_error)
-        redirect_to @vault
-      end
-    end
-  end
-
-  def redirect
-    redirect_to @vault
-  end
 
   # GET /snippets
   # GET /snippets.json
@@ -105,5 +84,25 @@ class SnippetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
       params.require(:snippet).permit(:name, :language, :code)
+    end
+
+    def check_edit_permissions
+      if @vault.user_id != current_user.id then
+        flash[:alert] = t(:permissions_error)
+        redirect_to @vault
+      end
+    end
+
+    def check_show_permissions
+      if !user_signed_in? || @vault.user_id != current_user.id
+        if @vault.exposure == "private_vault"
+          flash[:alert] = t(:permissions_error)
+          redirect_to @vault
+        end
+      end
+    end
+
+    def redirect
+      redirect_to @vault
     end
 end
