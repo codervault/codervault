@@ -1,7 +1,8 @@
 CoderVault
 ----------
-[![GitHub Release](https://img.shields.io/github/release/codervault/codervault.svg)]()&nbsp;
-[![GitHub Issues](https://img.shields.io/github/issues/codervault/codervault.svg)]()&nbsp;
+[![GitHub Release](https://img.shields.io/github/release/codervault/codervault.svg)](https://github.com/codervault/codervault/releases)&nbsp;
+[![Travis](https://img.shields.io/travis/codervault/codervault.svg)](https://travis-ci.org/codervault/codervault)&nbsp;
+[![GitHub Issues](https://img.shields.io/github/issues/codervault/codervault.svg)](https://github.com/codervault/codervault/issues)&nbsp;
 [![GitHub License](https://img.shields.io/github/license/codervault/codervault.svg)](#license)&nbsp;
 
 <p align="center">
