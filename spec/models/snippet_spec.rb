@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Snippet, type: :model do
-
   it { should belong_to(:vault) }
   it { should validate_presence_of(:name).on(:create) }
   it { should validate_presence_of(:language).on(:create) }
