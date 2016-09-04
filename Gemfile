@@ -33,6 +33,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem "factory_girl_rails"
+  gem 'shoulda-matchers', '~> 3.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
@@ -54,3 +57,6 @@ gem 'devise'
 
 # Kramdown
 gem 'kramdown'
+
+#windows
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
