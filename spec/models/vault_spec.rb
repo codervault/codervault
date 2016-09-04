@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Vault, type: :model do
-
   it { should belong_to(:user) }
   it { should have_many(:snippets).dependent(:delete_all) }
   it { should validate_presence_of(:name).on(:create) }
