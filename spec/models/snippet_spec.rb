@@ -2,31 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Snippet, type: :model do
 
-  let(:snippet) { create(:snippet) }
-
-  it "name should be present" do
-    snippet.name = ' '
-    expect(snippet).not_to be_valid
-  end
-
-  it "language should be present" do
-    snippet.language = ' '
-    expect(snippet).not_to be_valid
-  end
-
-  it "code should be present" do
-    snippet.code = ' '
-    expect(snippet).not_to be_valid
-  end
-
-  it "vault_id should be present" do
-    snippet.vault_id = ' '
-    expect(snippet).not_to be_valid
-  end
-
-  it "belongs to vault" do
-    vault = create(:vault)
-    snippet.vault_id = vault.id
-    expect(snippet.vault).to eq(vault)
-  end
+  it { should belong_to(:vault) }
+  it { should validate_presence_of(:name).on(:create) }
+  it { should validate_presence_of(:language).on(:create) }
+  it { should validate_presence_of(:code).on(:create) }
+  it { should validate_presence_of(:vault_id).on(:create) }
+  it { should define_enum_for(:language) }
 end
