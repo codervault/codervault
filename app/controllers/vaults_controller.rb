@@ -1,6 +1,6 @@
 class VaultsController < ApplicationController
   # Devise
-  before_action :authenticate_user!, only: [:index, :new, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
 
   before_action :set_vault, only: [:show, :edit, :update, :destroy]
   before_action :check_edit_permissions, only: [:edit, :update, :destroy]
