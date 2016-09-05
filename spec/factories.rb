@@ -1,20 +1,20 @@
 FactoryGirl.define do
-  factory :user do |u|
+  factory :user do
     sequence(:email) { |n| "example#{n}@yahoo.com" }
-    u.password { 'password' }
-    u.password_confirmation { 'password' }
+    password { 'password' }
+    password_confirmation { 'password' }
   end
 
-  factory :vault do |v|
-    v.name { "Vault" }
-    v.exposure { rand(0..2) }
-    v.user_id { rand(1..10) }
+  factory :vault do
+    name { "Vault" }
+    exposure { rand(0..2) }
+    user
   end
 
-  factory :snippet do |s|
-    s.name { 'Snippet' }
-    s.language { rand(0..30) }
-    s.code { 'Test test test test' }
-    s.vault_id { rand(1..100) }
+  factory :snippet do
+    name { 'Snippet' }
+    language { rand(0..30) }
+    code { 'Test test test test' }
+    vault
   end
 end
