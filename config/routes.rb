@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
+  resources :users, only: [:show]
   resources :vaults do
     resources :snippets
   end
-
-  devise_for :users
 
   authenticated :user do
     root "vaults#index", as: :authenticated_root
@@ -14,5 +15,4 @@ Rails.application.routes.draw do
   get "about", to: "home#about", as: "about"
 
   root to: "home#index"
-
 end

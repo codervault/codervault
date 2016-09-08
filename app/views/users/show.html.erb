@@ -1,0 +1,17 @@
+<h1>Profile</h1>
+
+<div class="row">
+      <div class="col-md-2">
+        <%= image_tag current_user.avatar.url, style: "width: 200px; heigth: 200px;" %>
+        Name: <%= current_user.full_name %>
+        email: <%= current_user.email %>
+        <br>
+        url: <%= link_to current_user.url %>
+        <br>
+        bio: <%= current_user.bio %>
+      </div>
+
+      <div class="col-md-10 text-right">
+        <%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-default' %>
+      </div>
+</div>
