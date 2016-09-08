@@ -4,3 +4,6 @@ rvm:
   - 2.2
 
 cache: bundler
+
+notifications:
+  slack: codervault:W8M24248ywA0cGVskxhJiQyZ
