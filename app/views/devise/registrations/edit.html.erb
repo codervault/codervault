@@ -3,15 +3,58 @@
   <h1>Edit <%= resource_name.to_s.humanize %></h1>
 </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }, multipart: true) do |f| %>
 <%= devise_error_messages! %>
+
+<div class="form-group">
+  <%= f.label 'Profile picture', class: "col-sm-2 control-label" %>
+
+  <%= image_tag current_user.avatar.url, style: "width: 150px; heigth: 150px;" %>
+
+  <label class="btn btn-default btn-file">
+    Browse
+    <%= f.file_field :avatar, style: "display: none;" %>
+  </label>
+</div>
+
+<div class="form-group">
+   <%= f.label :Name, class: "col-sm-2 control-label" %>
+
+   <div class="col-sm-3">
+     <%= f.text_field :full_name, autofocus: true, class: "form-control" %>
+   </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :username, class: "col-sm-2 control-label" %>
+
+  <div class="col-sm-3">
+    <%= f.text_field :username, autofocus: false, class: "form-control" %>
+  </div>
+</div>
 
 <div class="form-group">
   <%= f.label :email, class: "col-sm-2 control-label" %>
 
   <div class="col-sm-3">
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    <%= f.email_field :email, autofocus: false, class: "form-control" %>
   </div>
+</div>
+
+<div class="form-group">
+  <%= f.label 'Bio', class: "col-sm-2 control-label" %>
+
+   <div class="col-sm-3">
+      <%= f.text_area :bio, autofocus: false, class: "form-control", rows: 5 %>
+   </div>
+</div>
+
+<div class="form-group">
+    <%= f.label 'URL', class: "col-sm-2 control-label" %>
+
+    <div class="col-sm-3">
+        <%= f.text_field :url, autofocus: true, class: "form-control" %>
+    </div>
 </div>
 
 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

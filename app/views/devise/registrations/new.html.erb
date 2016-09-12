@@ -9,10 +9,18 @@
 </div>
 
 <div class="form-group">
+   <%= f.label :username, class: "col-sm-2 control-label" %>
+
+   <div class="col-sm-3">
+     <%= f.text_field :username, autofocus: true, placeholder: "username", class: "form-control" %>
+   </div>
+</div>
+
+<div class="form-group">
   <%= f.label :email, class: "col-sm-2 control-label" %>
 
   <div class="col-sm-3">
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    <%= f.email_field :email, autofocus: false, placeholder: "email address", class: "form-control" %>
   </div>
 </div>
 
@@ -20,7 +28,7 @@
   <%= f.label :password, class: "col-sm-2 control-label" %>
 
   <div class="col-sm-3">
-    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "create password", class: "form-control" %>
   </div>
 
   <% if @validatable %>
@@ -32,7 +40,7 @@
   <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
 
   <div class="col-sm-3">
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirm password", class: "form-control" %>
   </div>
 </div>
 
