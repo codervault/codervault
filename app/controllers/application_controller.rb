@@ -6,9 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :username, :password, :password_confirmation) }
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :username, :full_name, :bio, :url, :password, :password_confirmation, :avatar, :current_password)}
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :username, :password, :password_confirmation) }
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :username, :full_name, :bio, :url, :password, :password_confirmation, :avatar, :current_password)}
+    end
 end

@@ -32,8 +32,8 @@ TO-DO
 
 Screenshots
 -----------
-![Vault](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/vault.png)
-![Snippet](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/snippet.png)
+- [Vault](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/vault.png)
+- [Snippet](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/snippet.png)
 
 
 License
