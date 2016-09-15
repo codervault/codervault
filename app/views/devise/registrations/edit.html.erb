@@ -10,12 +10,7 @@
   <%= f.label 'Profile picture', class: "col-sm-2 control-label" %>
 
   <div class="col-sm-3">
-    <%= image_tag current_user.avatar.url, style: "height: auto; width: auto;" %>
-
-    <label class="btn btn-default btn-file">
-      Browse
-      <%= f.file_field :avatar, style: "display: none;" %>
-    </label>
+    <%= image_tag gravatar_url(current_user, 175) %>
   </div>
 </div>
 

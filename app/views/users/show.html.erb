@@ -2,7 +2,7 @@
 
 <div class="row">
       <div class="col-md-2">
-        <%= image_tag current_user.avatar.url, style: "width: 200px; heigth: 200px;" %>
+        <%= image_tag gravatar_url(current_user, 175) %>
         Name: <%= current_user.full_name %>
         email: <%= current_user.email %>
         <br>
