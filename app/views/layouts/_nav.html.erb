@@ -27,7 +27,7 @@
         <% if user_signed_in? %>
         <li class="dropdown">
           <a id="dropdownMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag gravatar_url(current_user, 25) %>
+            <%= image_tag current_user.avatar.url, style: "width: 25px; heigth: 25px;" %>
             <%= current_user.username %> <span class="caret"></span>
           </a>
 

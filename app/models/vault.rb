@@ -5,6 +5,4 @@ class Vault < ActiveRecord::Base
   validates_presence_of :name, :exposure, :user_id
 
   enum exposure: [ :private_vault, :unlisted_vault, :public_vault ]
-
-  delegate :username, to: :user, prefix: true
 end
