@@ -77,8 +77,9 @@ class SnippetsController < ApplicationController
     end
 
     def set_snippet
-      @vault = Vault.find(params[:vault_id])
-      @snippet = @vault.snippets.find(params[:id])
+      @vault = Vault.find_by_id(params[:vault_id])
+      @snippet = @vault.snippets.find_by_id(params[:id]) unless @vault.nil?
+      redirect_to root_url if @vault.nil? || @snippet.nil? || @vault.user_username != params[:username]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
