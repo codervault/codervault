@@ -13,4 +13,9 @@ module ApplicationHelper
       else "info"
     end
   end
+
+  def gravatar_url(user, size)
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+    "https://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&d=mm"
+  end
 end
