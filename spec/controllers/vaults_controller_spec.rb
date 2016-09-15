@@ -63,14 +63,14 @@ RSpec.describe VaultsController, type: :controller do
 
     it "not equal to current_user" do
       login_user(not_current_user)
-      get :edit, id: vault.id, username: default_username
+      get :edit, id: vault.id, username: vault.user_username
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to be_present
     end
 
     it "logged in" do
       login_user(vault.user)
-      get :edit, id: vault.id, username: default_username
+      get :edit, id: vault.id, username: vault.user_username
       expect(response).to render_template(:edit)
     end
   end
@@ -104,14 +104,14 @@ RSpec.describe VaultsController, type: :controller do
 
     it "logged in" do
       login_user(vault.user)
-      put :update, id: vault.id, vault: attributes_for(:vault, exposure: 'public_vault'), username: default_username
+      put :update, id: vault.id, vault: attributes_for(:vault, exposure: 'public_vault'), username: vault.user_username
       expect(response).to redirect_to(vault_path(assigns(:vault).id))
       expect(flash[:notice]).to be_present
     end
 
     it "invalid attributes" do
       login_user(vault.user)
-      put :update, id: vault.id, vault: attributes_for(:vault, exposure: ' '), username: default_username
+      put :update, id: vault.id, vault: attributes_for(:vault, exposure: ' '), username: vault.user_username
       expect(response).to render_template(:edit)
     end
   end
@@ -124,7 +124,7 @@ RSpec.describe VaultsController, type: :controller do
 
     it "logged in" do
       login_user(vault.user)
-      delete :destroy, id: vault.id, username: default_username
+      delete :destroy, id: vault.id, username: vault.user_username
       expect(response).to redirect_to(vaults_path)
       expect(flash[:notice]).to be_present
     end

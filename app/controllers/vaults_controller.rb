@@ -3,7 +3,6 @@ class VaultsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   before_action :set_vault, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_username, only: [:show]
   before_action :check_edit_permissions, only: [:edit, :update, :destroy]
   before_action :check_show_permissions, only: :show
 
@@ -90,18 +89,6 @@ class VaultsController < ApplicationController
   end
 
   private
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vault
-      @vault = Vault.find_by_id(params[:id])
-      redirect_to root_url if @vault.nil?
-    end
-
-    # Check is the given username is owned by the vault's user
-    def authenticate_username
-      vault = Vault.find(params[:id])
-      redirect_to root_url unless vault.user_username == params[:username]
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vault_params

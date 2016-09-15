@@ -7,6 +7,10 @@ RSpec.describe SnippetsController, type: :controller do
   let!(:snippet) { create(:snippet) }
   let(:default_username) { 'default' }
 
+  before(:each) do
+    controller.instance_variable_set(:@vault, snippet.vault)
+  end
+
   it { should use_before_action(:authenticate_user!) }
   it { should use_before_action(:set_snippet) }
   it { should use_before_action(:check_edit_permissions) }
@@ -21,7 +25,7 @@ RSpec.describe SnippetsController, type: :controller do
 
     it "logged in" do
       login_user(current_user)
-      get :index, vault_id: snippet.vault.id, username: default_username
+      get :index, vault_id: snippet.vault.id, username: snippet.vault.user_username
       expect(response).to redirect_to(vault_path(snippet.vault.id))
     end
   end
@@ -93,7 +97,7 @@ RSpec.describe SnippetsController, type: :controller do
 
     it "logged in" do
       login_user(current_user)
-      post :create, { vault_id: snippet.vault.id, snippet: attributes_for(:snippet, language: 'bash'), username: default_username }
+      post :create, { vault_id: snippet.vault.id, snippet: attributes_for(:snippet, language: 'bash'), username: snippet.vault.user_username }
       expect(Snippet.count).to eq(2) # + 1 vault is created above
       expect(response).to redirect_to(vault_snippet_path(vault_id: snippet.vault.id, id: assigns(:snippet).id))
       expect(flash[:notice]).to be_present
@@ -101,7 +105,7 @@ RSpec.describe SnippetsController, type: :controller do
 
     it "invalid attributes" do
       login_user(current_user)
-      post :create, { vault_id: snippet.vault.id, snippet: attributes_for(:snippet, name: ' ', language: 'bash'), username: default_username }
+      post :create, { vault_id: snippet.vault.id, snippet: attributes_for(:snippet, name: ' ', language: 'bash'), username: snippet.vault.user_username }
       expect(response).to render_template(:new)
     end
   end

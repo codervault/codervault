@@ -26,9 +26,9 @@
       <% if @interaction_enabled %>
       <div class="overlay">
         <p>
-          <%= link_to "Show", vault_snippet_path(@vault.id, snippet.id, username: @vault.user.username), class: "btn btn-default btn-xs" %>
-          <%= link_to "Edit", edit_vault_snippet_path(@vault.id, snippet.id, username: @vault.user.username), class: "btn btn-default btn-xs" %>
-          <%= link_to "Delete", vault_snippet_path(@vault.id, snippet.id, username: @vault.user.username), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+          <%= link_to "Show", vault_snippet_path(@vault.id, snippet.id, username: @vault.user_username), class: "btn btn-default btn-xs" %>
+          <%= link_to "Edit", edit_vault_snippet_path(@vault.id, snippet.id, username: @vault.user_username), class: "btn btn-default btn-xs" %>
+          <%= link_to "Delete", vault_snippet_path(@vault.id, snippet.id, username: @vault.user_username), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
         </p>
       </div>
       <% else %>
