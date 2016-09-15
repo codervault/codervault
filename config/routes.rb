@@ -4,10 +4,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  scope ':username', defaults: { username: 'default' } do
-    resources :vaults do
-      resources :snippets
-    end
+  resources :vaults do
+    resources :snippets
   end
 
   authenticated :user do

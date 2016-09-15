@@ -12,7 +12,7 @@
   <% @public_vaults_by_name.each do |vault| %>
   <div class="col-md-12">
     <div class="panel panel-default panel-interactive">
-      <%= link_to "", vault_path(vault, username: vault.user.username), class: "overlay" %>
+      <%= link_to "", vault, class: "overlay" %>
 
       <div class="panel-heading">
         <h3 class="panel-title">

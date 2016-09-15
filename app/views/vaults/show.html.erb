@@ -26,13 +26,13 @@
       <% if @interaction_enabled %>
       <div class="overlay">
         <p>
-          <%= link_to "Show", vault_snippet_path(@vault.id, snippet.id, username: @vault.user.username), class: "btn btn-default btn-xs" %>
-          <%= link_to "Edit", edit_vault_snippet_path(@vault.id, snippet.id, username: @vault.user.username), class: "btn btn-default btn-xs" %>
-          <%= link_to "Delete", vault_snippet_path(@vault.id, snippet.id, username: @vault.user.username), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+          <%= link_to "Show", vault_snippet_path(@vault.id, snippet.id), class: "btn btn-default btn-xs" %>
+          <%= link_to "Edit", edit_vault_snippet_path(@vault.id, snippet.id), class: "btn btn-default btn-xs" %>
+          <%= link_to "Delete", vault_snippet_path(@vault.id, snippet.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
         </p>
       </div>
       <% else %>
-      <%= link_to "", vault_snippet_path(@vault.id, snippet.id, username: @vault.user.username), class: "overlay" %>
+      <%= link_to "", vault_snippet_path(@vault.id, snippet.id), class: "overlay" %>
       <% end %>
 
       <div class="panel-heading">
@@ -86,9 +86,9 @@
 
     <% if @interaction_enabled %>
     <div class="btn-group btn-group-justified">
-      <%= link_to 'Add Snippet', new_vault_snippet_path(@vault, username: @vault.user.username), class: "btn btn-default" %>
-      <%= link_to 'Edit Vault', edit_vault_path(@vault, username: @vault.user.username), class: "btn btn-default" %>
-      <%= link_to 'Delete Vault', vault_path(@vault, username: @vault.user.username), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <%= link_to 'Add Snippet', new_vault_snippet_path(@vault), class: "btn btn-default" %>
+      <%= link_to 'Edit Vault', edit_vault_path(@vault), class: "btn btn-default" %>
+      <%= link_to 'Delete Vault', @vault, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
     </div>
     <% end %>
   </div>
