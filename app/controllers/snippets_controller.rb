@@ -2,7 +2,7 @@ class SnippetsController < ApplicationController
   # Devise
   before_action :authenticate_user!, except: [:show]
 
-  before_action :set_vault, only: [:new, :create, :index]
+  before_action :set_vault, only: [:show, :new, :create, :index]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_action :check_edit_permissions, only: [:new, :edit, :update, :destroy]
   before_action :check_show_permissions, only: [:show]
@@ -71,15 +71,10 @@ class SnippetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vault
-      @vault = Vault.find(params[:vault_id])
-    end
 
     def set_snippet
-      @vault = Vault.find_by_id(params[:vault_id])
-      @snippet = @vault.snippets.find_by_id(params[:id]) unless @vault.nil?
-      redirect_to root_url if @vault.nil? || @snippet.nil? || @vault.user_username != params[:username]
+      @snippet = @vault.snippets.find_by_id(params[:id])
+      redirect_to root_url if @snippet.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
