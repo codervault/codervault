@@ -35,6 +35,14 @@ Screenshots
 - [Vault](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/vault.png)
 - [Snippet](https://dl.dropboxusercontent.com/u/18322837/GitHub/codervault/snippet.png)
 
+Running in Docker
+-----------------
+```
+docker build -t codervault .
+docker run -d --name codervault -p 3000:3000 codervault
+```
+
+You should then be able to visit `http://localhost:3000`
 
 License
 -------
