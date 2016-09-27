@@ -2,7 +2,6 @@ class SnippetsController < ApplicationController
   # Devise
   before_action :authenticate_user!, except: [:show]
 
-  before_action :authenticate_username, only: [:show]
   before_action :set_vault
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_action :check_edit_permissions, only: [:new, :edit, :update, :destroy]

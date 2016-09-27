@@ -7,7 +7,6 @@ RSpec.describe VaultsController, type: :controller do
   let!(:vault) { create(:vault) }
 
   it { should use_before_action(:authenticate_user!) }
-  it { should use_before_action(:authenticate_username) }
   it { should use_before_action(:set_vault) }
   it { should use_before_action(:check_edit_permissions) }
   it { should use_before_action(:check_show_permissions) }

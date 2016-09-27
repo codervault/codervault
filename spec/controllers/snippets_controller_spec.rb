@@ -7,7 +7,6 @@ RSpec.describe SnippetsController, type: :controller do
   let!(:snippet) { create(:snippet) }
 
   it { should use_before_action(:authenticate_user!) }
-  it { should use_before_action(:authenticate_username) }
   it { should use_before_action(:set_snippet) }
   it { should use_before_action(:check_edit_permissions) }
   it { should use_before_action(:check_show_permissions) }

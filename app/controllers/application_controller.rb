@@ -9,11 +9,12 @@ class ApplicationController < ActionController::Base
   # Use callbacks to share common setup or constraints between actions.
   def set_vault
     @vault = params[:vault_id] ? Vault.find_vault(params[:vault_id]) : Vault.find_vault(params[:id])
-  end
 
-  def authenticate_username
-    user = User.find_by_username(params[:username])
-    redirect_to root_url if user.nil? || user.vaults.find_vault(params[:vault_id]).nil?
+    if params[:action] == 'show'
+      redirect_to root_url if @vault.nil? || @vault.user_username != params[:username]
+    else
+      redirect_to root_url if @vault.nil?
+    end
   end
 
   def check_edit_permissions
