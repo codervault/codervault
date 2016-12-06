@@ -8,7 +8,7 @@
   <% @vaults.each do |vault| %>
   <div class="col-md-12">
     <div class="panel panel-default panel-interactive">
-      <%= link_to "", vault_path(vault, username: vault.user.username), class: "overlay" %>
+      <%= link_to "", owner_vault_path(vault, username: vault.user.username), class: "overlay" %>
 
       <!-- <div class="overlay">
         <p class="center-block">

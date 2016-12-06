@@ -39,8 +39,8 @@
 
     <% if @interaction_enabled %>
     <div class="btn-group btn-group-justified">
-      <%= link_to 'Edit', edit_vault_snippet_path(@vault.id, @snippet.id), class: "btn btn-default" %>
-      <%= link_to 'Delete', vault_snippet_path(@vault.id, @snippet.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <%= link_to 'Edit', edit_vault_snippet_path(@vault, @snippet), class: "btn btn-default" %>
+      <%= link_to 'Delete', vault_snippet_path(@vault, @snippet), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
     </div>
     <% end %>
   </div>
