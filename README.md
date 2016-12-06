@@ -21,6 +21,7 @@ CoderVault support syntax highlight for 100+ programming languages.
 
 TO-DO
 -----
+- [ ] Search
 - [ ] Versioning
 - [ ] Tags
 - [ ] Pagination
